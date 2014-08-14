@@ -29,6 +29,24 @@ define([
       };
     });
 
+    answers.alterContext = function (fn, b) {
+      return fn.apply(b);
+    };
+
+
+    answers.alterObjects = function(obj, val) {
+      obj.prototype.greeting = val;
+    };
+
+    answers.iterate = function (o) {
+      var r = [];
+      for(p in o) {
+        if(o.hasOwnProperty(p))
+          r.push(p + ': ' + o[p]);
+      }
+      return r;
+    };
+
     it('you should be able to alter the context in which a method runs', function() {
       // define a function for fn so that the following will pass
       expect(answers.alterContext(a.sayIt, b)).to.eql('Yo, Rebecca!');
