@@ -6,6 +6,23 @@ if (typeof expect !== 'function') { var expect = require('expect.js'); }
 define([
   'app/bestPractices'
 ], function(answers) {
+
+  answers.globals = function () {
+    window.myObject = false;
+  };
+
+  answers.functions = function (dontUnderstandThisParameter) {
+    return 'a';
+  };
+
+  answers.parseInt = function (str) {
+    return parseInt(str,10);
+  };
+
+  answers.identity = function (val1, val2) {
+    return val1 === val2;
+  };
+
   describe('best practices', function(){
     it('you should avoid global variables', function() {
       answers.globals();
