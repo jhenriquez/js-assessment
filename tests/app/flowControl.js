@@ -7,6 +7,28 @@ define([
   'app/flowControl'
 ], function(answers) {
   describe('flow control', function() {
+
+    answers.fizzBuzz = function (value) {
+      if (value === undefined)
+        return false;
+
+      if (isNaN(value))
+        return false;
+
+      var r = '';
+
+      if (value % 3 === 0)
+        r += 'fizz';
+
+      if (value % 5 === 0)
+        r += 'buzz';
+
+      if (r === '')
+        return value;
+
+      return r;
+    };
+
     it('you should be able to conditionally branch your code', function() {
       var num = 0;
 
