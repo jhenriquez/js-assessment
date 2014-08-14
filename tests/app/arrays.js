@@ -6,6 +6,64 @@ define([
   'app/arrays'
 ], function(answers) {
   describe('arrays', function() {
+
+    answers.indexOf = function (a, value) {
+      for(var i = 0; i < a.length; i++)
+        if(a[i] === value)
+          return i;
+        return -1;
+    };
+
+    answers.sum = function (a) {
+      var acc = 0;
+      for(var i = 0; i < a.length; i++)
+        acc += a[i];
+      return acc;
+    };
+
+    answers.remove = function (a,value) {
+      var cp = [];
+      for(var i = 0; i < a.length; i++) {
+        if(a[i] !== value)
+          cp.push(a[i]);
+      }
+      return cp;
+    };
+
+    // not sure how to handle remove without copy.
+
+    answers.append = function (a, value) {
+      a.push(value);
+      return a;
+    };
+
+    answers.truncate = function (a) {
+      var cp = [];
+      for(var i = 0; i < a.length-1; i++)
+        cp.push(a[i]);
+      return cp;
+    };
+
+    answers.prepend = function (a,value) {
+      var cp = [value];
+      for(var i = 0; i < a.length; i++)
+        cp.push(a);
+      return cp;
+    };
+
+    answers.curtail = function (a) {
+      var cp = [];
+      for(var i = 1; i < a.length; i++)
+        cp.push(a[i]);
+      return cp;
+    };
+
+    answers.concat = function(a,b) {
+      for(var i = 0; i < b.length; i++)
+        a.push(b[i]);
+      return a;
+    };
+
     var a;
 
     beforeEach(function() {
