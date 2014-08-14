@@ -58,10 +58,47 @@ define([
       return cp;
     };
 
-    answers.concat = function(a,b) {
+    answers.concat = function (a,b) {
       for(var i = 0; i < b.length; i++)
         a.push(b[i]);
       return a;
+    };
+
+    answers.insert = function (a, value, position) {
+      var cp = [];
+      for(var i = 0; i < a.length; i++) {
+        if(cp.length === position)
+          cp.push(value);
+        cp.push(a[i]);
+      }
+      return cp;
+    };
+
+    answers.count = function (a, instance) {
+      var count = 0;
+      for(var i = 0; i < a.length; i++) {
+        if(a[i] === instance) ++count;
+      }
+      return count;
+    };
+
+    // I can't seem to figure out the duplicates either
+
+    answers.square = function (a) {
+      var sqrt = [];
+      for(var i = 0; i < a.length; i++) {
+        sqrt.push(a[i]*a[i]);
+      }
+      return sqrt;
+    };
+
+    answers.findAllOccurrences = function (a, target) {
+      var occ = [];
+      for(var i = 0; i < a.length; i++) {
+        if(a[i] === target)
+          occ.push(i);
+      }
+      return occ;
     };
 
     var a;
