@@ -100,7 +100,7 @@ define(function() {
         return sqrt;
     },
 
-    findAllOccurrences : function(arr, target) {
+    findAllOccurrences : function(a, target) {
         var occ = [];
         for(var i = 0; i < a.length; i++) {
             if(a[i] === target)
