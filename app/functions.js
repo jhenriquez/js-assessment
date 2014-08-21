@@ -39,7 +39,7 @@ define(function() {
         var args = [];
         for(var i = 1; i < arguments.length; i++)
             args[args.length] = arguments[i];
-        return fn.apply(this, args);
+        return fn.apply(null, args);
     },
 
     partialUsingArguments : function(fn) {
@@ -55,9 +55,22 @@ define(function() {
     },
 
     curryIt : function(fn) {
-        return function (arg) {
-            return fn(n)
+        var acc = Array.prototype.slice(arguments,1,arguments.length);
+
+        function tryApply (fn, parameters) {
+            if (parameters.length >= fn.length)
+                return fn.apply(null, parameters);
+            return getAccumulator(fn, parameters);
         };
+        
+        function getAccumulator (fn, provided) {
+           return function (arg) {
+                var all = provided.concat(Array.prototype.slice.apply(arguments));
+                return tryApply(fn,all);
+            }
+        };
+
+        return getAccumulator(fn, acc);
     }
   };
 });
