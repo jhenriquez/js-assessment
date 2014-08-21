@@ -140,6 +140,14 @@ define([
       result = answers.curryIt(curryMe)(a)(b)(c);
       expect(typeof result).to.eql('number');
       expect(result).to.eql(curryMe(a, b, c));
+
+      result = answers.curryIt(curryMe)(a)()(b)()(c);
+      expect(typeof result).to.eql('number');
+      expect(result).to.eql(curryMe(a, b, c));
+
+      result = answers.curryIt(curryMe)(a,b,c,a);
+      expect(typeof result).to.eql('number');
+      expect(result).to.eql(curryMe(a, b, c));
     });
   });
 });
