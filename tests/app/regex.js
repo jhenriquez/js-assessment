@@ -26,6 +26,7 @@ define([
     });
 
     it('you should be able to capture the first series of three numbers', function() {
+      var capt = answers.captureThreeNumbers('abc123');
       expect(answers.captureThreeNumbers('abc123')).to.eql('123');
       expect(answers.captureThreeNumbers('9876543')).to.eql('987');
       expect(answers.captureThreeNumbers('abcdef')).to.eql(false);
