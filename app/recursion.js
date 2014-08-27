@@ -23,11 +23,7 @@ define(function() {
     			if (dir.files[i].files) return locateDir (dir.files[i]);
     	};
 
-    	if (dirName) {
-    		processDir (locateDir (data));
-    	} else  {
-    		processDir (data);
-    	}
+    	processDir(dirName ? locateDir(data) : data);
 
     	return filesOnly;
     },

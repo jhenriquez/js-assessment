@@ -16,8 +16,7 @@ define(function() {
 
     captureThreeNumbers : function(str) {
         var match = str.match(/\d{3}/);
-        if(match)
-            return match[0];
+        if(match) return match[0];
         return false;
     },
 
